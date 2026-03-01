@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hospital Bed Allocation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Hospital Bed Allocation System</h1>
+
+    <form method="POST">
+        <input type="number" step="any" name="heart_rate" placeholder="Heart Rate" required>
+        <input type="number" step="any" name="oxygen" placeholder="Oxygen Level (%)" required>
+        <input type="number" step="any" name="temperature" placeholder="Temperature" required>
+        <button type="submit">Allocate Bed</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <p>Risk Score: {{ result.score }}</p>
+        <p>Risk Level: {{ result.risk }}</p>
+        <p>Predicted State: {{ result.predicted }}</p>
+        <p>Expected Stay: {{ result.stay }}</p>
+        <p>Allocation: {{ result.allocation }}</p>
+        <p>Remaining ICU Beds: {{ result.icu }}</p>
+        <p>Remaining Ward Beds: {{ result.ward }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
